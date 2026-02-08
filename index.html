@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Damisha Syed - Economist Portfolio">
     <meta name="theme-color" content="#667eea">
+    <meta name="google-site-verification" content="T9qZVCVKxLvruwxE40VpN8bzD5a1a2rr9hKACgX0lks" />
     <link rel="icon" type="image/x-icon" href="ds-logo.png">
-    <title>Damisha Syed | Economist Portfolio</title>
+    <title>Damisha Syed | Economist & Business Development Professional</title>
     <style>
         * {
             margin: 0;
@@ -101,6 +102,7 @@
             width: 100%;
             animation: slideUp 0.5s ease;
             border: 1px solid var(--border-color);
+            position: relative;
         }
         
         @keyframes slideUp {
@@ -125,11 +127,18 @@
             margin-bottom: 30px;
             font-size: clamp(0.85rem, 3vw, 0.95rem);
         }
+        /* Password input with eye icon inside */
         
-        .password-box input {
+        .password-input-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .password-input-container input {
             width: 100%;
             padding: clamp(12px, 3vw, 15px);
-            margin-bottom: 20px;
+            padding-right: 45px;
             border: 2px solid var(--border-color);
             border-radius: 10px;
             font-size: clamp(0.9rem, 3vw, 1rem);
@@ -138,11 +147,40 @@
             color: var(--text-primary);
             appearance: none;
             -webkit-appearance: none;
+            box-sizing: border-box;
         }
         
-        .password-box input:focus {
+        .password-input-container input:focus {
             outline: none;
             border-color: var(--accent-primary);
+        }
+        
+        .eye-icon-container {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            transition: color 0.3s;
+            background: transparent;
+            border: none;
+            z-index: 2;
+        }
+        
+        .eye-icon-container:hover {
+            color: var(--accent-primary);
+        }
+        
+        .eye-icon-container svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
         }
         
         .password-box button {
@@ -420,7 +458,8 @@
         }
         
         .experience-item,
-        .education-item {
+        .education-item,
+        .project-item {
             margin-bottom: clamp(20px, 5vw, 25px);
             padding-left: clamp(15px, 4vw, 20px);
             border-left: 3px solid var(--accent-primary);
@@ -428,13 +467,15 @@
         }
         
         .experience-item:hover,
-        .education-item:hover {
+        .education-item:hover,
+        .project-item:hover {
             padding-left: clamp(20px, 5vw, 25px);
             border-left-width: 5px;
         }
         
         .experience-item:last-child,
-        .education-item:last-child {
+        .education-item:last-child,
+        .project-item:last-child {
             margin-bottom: 0;
         }
         
@@ -475,6 +516,65 @@
             flex-wrap: wrap;
         }
         
+        .item-description {
+            color: var(--text-secondary);
+            font-size: clamp(0.95rem, 2.8vw, 1rem);
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        
+        .bullet-points {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .bullet-points li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: clamp(0.9rem, 2.8vw, 0.95rem);
+            line-height: 1.5;
+        }
+        
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .skill-category h3 {
+            color: var(--accent-primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-chip {
+            background: var(--gradient);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: transform 0.2s;
+        }
+        
+        .skill-chip:hover {
+            transform: translateY(-2px);
+        }
+        
         .footer {
             text-align: center;
             padding: clamp(20px, 5vw, 30px);
@@ -496,7 +596,7 @@
             background-size: 60px 60px;
             background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
         }
-        /* Scroll to Top Button */
+        /* Enhanced Scroll to Top Button */
         
         .scroll-top {
             position: fixed;
@@ -504,8 +604,8 @@
             right: clamp(20px, 5vw, 30px);
             background: var(--gradient);
             color: white;
-            width: clamp(45px, 12vw, 50px);
-            height: clamp(45px, 12vw, 50px);
+            width: clamp(50px, 12vw, 60px);
+            height: clamp(50px, 12vw, 60px);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -514,20 +614,55 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px var(--shadow);
-            border: none;
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            box-shadow: 0 6px 20px var(--shadow);
+            border: 2px solid var(--bg-primary);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            z-index: 99;
             -webkit-tap-highlight-color: transparent;
+            transform: translateY(20px);
         }
         
         .scroll-top.visible {
             opacity: 1;
             visibility: visible;
+            transform: translateY(0);
         }
         
         .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .scroll-top:after {
+            content: "Scroll to Top";
+            position: absolute;
+            bottom: 100%;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            border: 1px solid var(--border-color);
+        }
+        
+        .scroll-top:hover:after {
+            opacity: 1;
+        }
+        
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s;
+        }
+        
+        .scroll-top:hover svg {
+            transform: translateY(-3px);
         }
         /* Loading Animation */
         
@@ -612,6 +747,86 @@
             background: var(--accent-primary);
             color: white;
         }
+        /* Close button for security overlay */
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 20px;
+            transition: all 0.3s;
+            border: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+            transform: rotate(90deg);
+        }
+        /* Security notification */
+        
+        .security-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+            z-index: 999998;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.5s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .security-notification.hidden {
+            animation: slideOutRight 0.5s ease forwards;
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .security-notification .countdown {
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 5px;
+            min-width: 30px;
+            text-align: center;
+        }
         /* Touch device optimizations */
         
         @media (hover: none) and (pointer: coarse) {
@@ -624,9 +839,13 @@
                 transform: none;
             }
             .experience-item:hover,
-            .education-item:hover {
+            .education-item:hover,
+            .project-item:hover {
                 padding-left: clamp(15px, 4vw, 20px);
                 border-left-width: 3px;
+            }
+            .scroll-top:after {
+                display: none;
             }
         }
         /* Small phones */
@@ -643,6 +862,9 @@
                 height: 45px;
                 font-size: 1.1rem;
             }
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
         }
         /* Large phones and small tablets */
         
@@ -654,6 +876,9 @@
                 padding: 5px 12px;
                 font-size: 0.85rem;
             }
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
         }
         /* Tablets */
         
@@ -664,12 +889,18 @@
             .contact-info {
                 gap: 20px;
             }
+            .skills-section {
+                grid-template-columns: 1fr;
+            }
         }
         /* Small laptops and large tablets */
         
         @media (min-width: 769px) and (max-width: 1024px) {
             .container {
                 max-width: 90vw;
+            }
+            .skills-section {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         /* Landscape mode on phones */
@@ -756,7 +987,17 @@
             <div id="main-password-screen">
                 <h2>🔒 Portfolio Access</h2>
                 <p class="subtitle">Enter password to view Damisha Syed's Portfolio</p>
-                <input type="password" id="password-input" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPassword()">
+
+                <div class="password-input-container">
+                    <input type="password" id="password-input" placeholder="Enter password" onkeypress="if(event.key === 'Enter') checkPassword()">
+                    <div class="eye-icon-container" onclick="togglePasswordVisibility('password-input', this)">
+                        <svg id="portfolioEyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                </div>
+
                 <button onclick="checkPassword()">
                     Unlock Portfolio
                     <span class="loader" id="btn-loader"></span>
@@ -798,9 +1039,11 @@
         <span id="theme-icon">🌙</span>
     </button>
 
-    <!-- Scroll to Top -->
+    <!-- Enhanced Scroll to Top -->
     <button class="scroll-top" onclick="scrollToTop()" id="scrollTop" title="Scroll to top">
-        ↑
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
     </button>
 
     <!-- Portfolio Content -->
@@ -809,9 +1052,20 @@
             <header>
                 <img class="profile-img" src="img.png" alt="Damisha Syed">
                 <h1>Damisha Syed</h1>
-                <p class="tagline">Economist</p>
+                <p class="tagline">Economist & Business Development Professional</p>
 
                 <div class="contact-info">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                            <circle cx="12" cy="9" r="2.5"></circle>
+                        </svg> Sector 5D, North Karachi, Karachi
+                    </div>
+                    <a href="tel:+923158067595" class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg> +92 315 8067595
+                    </a>
                     <a href="mailto:damishasyed133@gmail.com" class="contact-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -823,34 +1077,63 @@
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                             <rect x="2" y="9" width="4" height="12"></rect>
                             <circle cx="4" cy="4" r="2"></circle>
-                        </svg> linkedin.com/in/damisha-syed
+                        </svg> LinkedIn Profile
                     </a>
                 </div>
 
                 <div class="skills">
+                    <span class="skill-tag">Economics</span>
+                    <span class="skill-tag">Business Development</span>
                     <span class="skill-tag">Data Analysis</span>
                     <span class="skill-tag">Social Media Management</span>
-                    <span class="skill-tag">Financial Analysis</span>
-                    <span class="skill-tag">Research</span>
+                    <span class="skill-tag">Sales Optimization</span>
                 </div>
             </header>
 
-            <section id="summary">
-                <h2>Professional Summary</h2>
+            <section id="objective">
+                <h2>Professional Objective</h2>
                 <p class="summary-text">
-                    Economics student with a strong interest in <strong>finance, policy, and development</strong>. Skilled in financial analysis, research, and basic management practices. Passionate about turning theory into real-world impact through
-                    learning and hands-on experience.
-                    <br><br> Actively seeking opportunities to grow professionally and contribute meaningfully. Open to new ideas, connections, and opportunities!
+                    A hardworking and adaptable individual seeking to apply my skills to contribute to organizational growth while continuously expanding my expertise. Passionate about continuous learning and self-improvement, with a strong interest in finance, policy, and
+                    development. Skilled in financial analysis, research, and basic management practices. Actively seeking opportunities to grow professionally and contribute meaningfully.
                 </p>
             </section>
 
             <section id="experience">
-                <h2>Experience</h2>
+                <h2>Work Experience</h2>
+
                 <div class="experience-item">
                     <div class="item-title">Cosmos Engineering</div>
                     <div class="item-subtitle">Trade and Business Development Officer</div>
-                    <div class="item-date">📅 December 2026 – Present (3 months)</div>
+                    <div class="item-date">🗓️ December 2026 – Present (3 months)</div>
                     <div class="item-location">📍 Karachi, Pakistan</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-title">Freelance Sales Representative</div>
+                    <div class="item-subtitle">Facebook Marketplace</div>
+                    <div class="item-date">🗓️ 2023 | 1.5 Years</div>
+                    <div class="item-location">📍 Remote</div>
+                    <div class="item-description">
+                        <ul class="bullet-points">
+                            <li>Marketed and sold computer items, including Chromebooks, through targeted online posts.</li>
+                            <li>Managed social media postings to attract potential buyers and promote products effectively.</li>
+                            <li>Negotiated with clients to achieve optimal sales outcomes and build long-term trust.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-title">Social Media Manager & Sales Advertiser</div>
+                    <div class="item-subtitle">Software House</div>
+                    <div class="item-date">🗓️ 6 Months</div>
+                    <div class="item-location">📍 Karachi, Pakistan</div>
+                    <div class="item-description">
+                        <ul class="bullet-points">
+                            <li>Spearheaded social media campaigns, enhancing brand visibility and customer engagement.</li>
+                            <li>Streamlined digital ads to boost product awareness and sales.</li>
+                            <li>Cultivated customer relationships, addressing inquiries and ensuring satisfaction.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -859,32 +1142,85 @@
                 <div class="education-item">
                     <div class="item-title">Jinnah University for Women</div>
                     <div class="item-subtitle">BS Economics</div>
-                    <div class="item-date">✅ Completed (2022 – 2025)</div>
-                    <div class="item-location">📍 Karachi Division, Sindh, Pakistan</div>
-                </div>
-                <div class="education-item">
-                    <div class="item-title">Al-Khair College of Higher Education</div>
-                    <div class="item-subtitle">Intermediate in Commerce</div>
-                    <div class="item-date">✅ Completed (2020 – 2021)</div>
-                    <div class="item-location">📍 Karachi Division, Sindh, Pakistan</div>
-                </div>
-                <div class="education-item">
-                    <div class="item-title">MD Grammar School</div>
-                    <div class="item-subtitle">MATRIC in Computer Science</div>
-                    <div class="item-date">✅ Completed (2016-2019)</div>
+                    <div class="item-date">✅ 2022 – 2025</div>
                     <div class="item-location">📍 Karachi, Pakistan</div>
                 </div>
                 <div class="education-item">
-                    <div class="item-title">Children Happy Home School</div>
-                    <div class="item-subtitle">Primary Education</div>
-                    <div class="item-date">✅ Completed (2006-2015)</div>
+                    <div class="item-title">Board of Intermediate Education</div>
+                    <div class="item-subtitle">Intermediate</div>
+                    <div class="item-date">✅ 2021</div>
                     <div class="item-location">📍 Karachi, Pakistan</div>
+                </div>
+                <div class="education-item">
+                    <div class="item-title">Board of Secondary Education</div>
+                    <div class="item-subtitle">Matriculation</div>
+                    <div class="item-date">✅ 2019</div>
+                    <div class="item-location">📍 Karachi, Pakistan</div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-section">
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-chip">MS Office Suite</span>
+                            <span class="skill-chip">Facebook Marketplace</span>
+                            <span class="skill-chip">Social Media Management</span>
+                            <span class="skill-chip">Online Marketing & Advertising</span>
+                            <span class="skill-chip">Content Creation & Engagement</span>
+                            <span class="skill-chip">Customer Relationship Management</span>
+                            <span class="skill-chip">Sales Optimization</span>
+                            <span class="skill-chip">Data Analysis</span>
+                            <span class="skill-chip">Financial Analysis</span>
+                            <span class="skill-chip">Research</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-chip">Effective Communication</span>
+                            <span class="skill-chip">Leadership & Team Coordination</span>
+                            <span class="skill-chip">Critical Thinking</span>
+                            <span class="skill-chip">Negotiation</span>
+                            <span class="skill-chip">Conflict Resolution</span>
+                            <span class="skill-chip">Time Management & Organization</span>
+                            <span class="skill-chip">Adaptability</span>
+                            <span class="skill-chip">Cross-Cultural Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Project Activities</h2>
+                <div class="project-item">
+                    <div class="item-title">Company Visit – SGS Pakistan Pvt. Ltd. (SGS S.A., Geneva)</div>
+                    <div class="item-subtitle">Professional Exposure Program</div>
+                    <div class="item-description">
+                        <ul class="bullet-points">
+                            <li>Analyzed global relationship management and sustainability practices.</li>
+                            <li>Engaged with executives to understand cross-border collaboration strategies.</li>
+                            <li>Prepared a business report on international operations and quality assurance.</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <strong>Key Skills Developed:</strong>
+                        <div class="skill-list" style="margin-top: 10px;">
+                            <span class="skill-chip">Global Analysis</span>
+                            <span class="skill-chip">Cross-Cultural Communication</span>
+                            <span class="skill-chip">Report Writing</span>
+                            <span class="skill-chip">Business Analysis</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <div class="footer">
                 <p>&copy; <span id="year"></span> Damisha Syed. All rights reserved.</p>
-                <p style="margin-top: 10px; font-size: 0.8rem;">Built with 💜 | Portfolio</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Built with 💜 | Professional Portfolio</p>
             </div>
         </div>
     </div>
@@ -900,6 +1236,28 @@
         let codeExpiryTime = null;
         let resendTimer = 60; // 60 seconds cooldown
         let timerInterval = null;
+
+        // Function to toggle password visibility
+        function togglePasswordVisibility(inputId, iconContainer) {
+            const input = document.getElementById(inputId);
+            const eyeIcon = iconContainer.querySelector('svg');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                // Change to eye with slash icon
+                eyeIcon.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                `;
+            } else {
+                input.type = 'password';
+                // Change back to regular eye icon
+                eyeIcon.innerHTML = `
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                `;
+            }
+        }
 
         function checkPassword() {
             const input = document.getElementById('password-input');
@@ -970,11 +1328,6 @@
             setTimeout(() => {
                 element.style.animation = '';
             }, 500);
-        }
-
-        function showHint() {
-            const hintBox = document.getElementById('hint-box');
-            hintBox.style.display = hintBox.style.display === 'block' ? 'none' : 'block';
         }
 
         // ==================== EMAIL VERIFICATION SYSTEM ====================
@@ -1218,7 +1571,7 @@
             document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
         }
 
-        // ==================== SCROLL MANAGEMENT ====================
+        // ==================== ENHANCED SCROLL MANAGEMENT ====================
         function initScrollListener() {
             const scrollBtn = document.getElementById('scrollTop');
             window.addEventListener('scroll', () => {
@@ -1237,36 +1590,12 @@
             });
         }
 
-        // ==================== INITIALIZATION ====================
-        // Add shake animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-                20%, 40%, 60%, 80% { transform: translateX(10px); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize
-        window.onload = () => {
-            loadTheme();
-            document.getElementById('password-input').focus();
-        };
-
-        // Prevent leaving with unsaved changes
-        window.addEventListener('beforeunload', (e) => {
-            if (document.getElementById('portfolio-content').style.display === 'block') {
-                e.preventDefault();
-                e.returnValue = '';
-            }
-        });
-
-        // Password: ChangeThisPassword123 (You should change this!)
+        // ==================== ENHANCED SECURITY SYSTEM ====================
         const SECURITY_PASSWORD = "ChangeThisPassword123";
-        const MAX_Attempts = 3;
-        let failedAttempts = 0;
+        const MAX_SECURITY_ATTEMPTS = 3;
+        let securityFailedAttempts = 0;
+        let inspectionAllowed = false;
+        let inspectionTimer = null;
 
         // Function to block all DevTools opening methods
         function blockDevTools() {
@@ -1307,114 +1636,142 @@
                 }
             });
 
-            // Block Right-Click Context Menu
+            // Block Right-Click Context Menu with close button option
             document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                askForPassword();
-                return false;
+                // Only block if inspection is not allowed
+                if (!inspectionAllowed) {
+                    e.preventDefault();
+                    showContextMenuWarning(e);
+                    return false;
+                }
             });
 
             // Detect if DevTools is already open
             function detectDevTools() {
+                if (inspectionAllowed) return false;
+
                 const devToolsWidth = window.outerWidth - window.innerWidth > 160;
                 const devToolsHeight = window.outerHeight - window.innerHeight > 160;
 
                 return devToolsWidth || devToolsHeight;
             }
 
-            // Auto-close if DevTools detected (2 seconds delay)
-            function autoCloseIfDevToolsOpen() {
-                if (detectDevTools()) {
-                    // Create warning message in console
-                    console.clear();
-                    console.log("%c⚠️ SECURITY ALERT ⚠️", "color: red; font-size: 30px; font-weight: bold;");
-                    console.log("%cDeveloper Tools Detected!", "color: yellow; font-size: 20px;");
-                    console.log("%cClosing website in 2 seconds...", "color: orange; font-size: 16px;");
-
-                    // Close after 2 seconds
-                    setTimeout(function() {
-                        closeWebsite();
-                    }, 2000);
+            // Check periodically if DevTools is open
+            setInterval(() => {
+                if (detectDevTools() && !inspectionAllowed) {
+                    askForPassword();
                 }
-            }
-
-            // Check periodically if DevTools is open (disabled for better UX)
-            // setInterval(autoCloseIfDevToolsOpen, 500);
-
-            // Also check when mouse leaves window (going to DevTools) - disabled
-            // document.addEventListener('mouseleave', function(e) {
-            //     if (e.clientY <= 0) {
-            //         setTimeout(function() {
-            //             if (detectDevTools()) {
-            //                 autoCloseIfDevToolsOpen();
-            //             }
-            //         }, 1000);
-            //     }
-            // });
+            }, 1000);
         }
 
-        // Password prompt function
+        // Show context menu warning with close option
+        function showContextMenuWarning(e) {
+            // Create simple warning tooltip
+            const tooltip = document.createElement('div');
+            tooltip.innerHTML = 'Inspection not allowed!';
+            tooltip.style.cssText = `
+                position: fixed;
+                top: ${e.clientY + 10}px;
+                left: ${e.clientX + 10}px;
+                background: #ff4444;
+                color: white;
+                padding: 8px 15px;
+                border-radius: 5px;
+                font-size: 14px;
+                z-index: 999999;
+                animation: fadeIn 0.3s;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            `;
+
+            document.body.appendChild(tooltip);
+
+            setTimeout(() => {
+                if (tooltip.parentNode) {
+                    tooltip.parentNode.removeChild(tooltip);
+                }
+            }, 1500);
+        }
+
+        // Password prompt function with close button and eye icon
         function askForPassword() {
             // Prevent multiple prompts
-            if (document.getElementById('securityOverlay')) return;
+            if (document.getElementById('securityOverlay') || inspectionAllowed) return;
 
             // Create overlay
             const overlay = document.createElement('div');
             overlay.id = 'securityOverlay';
             overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 999999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    `;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 999999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                animation: fadeIn 0.3s;
+            `;
 
             // Create password box
             const passwordBox = document.createElement('div');
             passwordBox.style.cssText = `
-        background: #1a1a1a;
-        padding: clamp(30px, 8vw, 40px);
-        border-radius: 10px;
-        border: 2px solid #ff4444;
-        text-align: center;
-        max-width: min(90vw, 400px);
-        width: 100%;
-        box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-    `;
+                background: #1a1a1a;
+                padding: clamp(30px, 8vw, 40px);
+                border-radius: 15px;
+                border: 2px solid #ff4444;
+                text-align: center;
+                max-width: min(90vw, 400px);
+                width: 100%;
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+                position: relative;
+            `;
 
             // Add attempts counter
-            const attemptsLeft = MAX_ATTEMPTS - failedAttempts;
+            const attemptsLeft = MAX_SECURITY_ATTEMPTS - securityFailedAttempts;
 
             passwordBox.innerHTML = `
-        <h2 style="color: #ff4444; margin-bottom: 20px; font-size: clamp(1.5rem, 5vw, 2rem);">🔒 SECURITY LOCK 🔒</h2>
-        <p style="color: white; margin-bottom: 10px; font-size: clamp(0.9rem, 3vw, 1rem);">Inspection is not allowed on this website!</p>
-        <p style="color: #ffcc00; margin-bottom: 20px; font-size: clamp(0.85rem, 2.5vw, 0.9rem);">
-            Attempts remaining: <span id="attemptsCount">${attemptsLeft}</span>/3
-        </p>
-        <input type="password" id="securityPassword" 
-               placeholder="Enter security password" 
-               style="width: 100%; padding: 12px; margin-bottom: 20px; 
-                      border: 1px solid #444; border-radius: 5px; 
-                      background: #222; color: white; font-size: 16px;
-                      -webkit-appearance: none;">
-        <button id="submitPassword" 
-                style="background: #ff4444; color: white; border: none; 
-                       padding: 12px 30px; border-radius: 5px; 
-                       font-size: clamp(0.9rem, 3vw, 1rem); cursor: pointer; width: 100%;
-                       transition: 0.3s; -webkit-tap-highlight-color: transparent;">
-            VERIFY & CONTINUE
-        </button>
-        <p style="color: #888; font-size: clamp(0.75rem, 2.5vw, 0.85rem); margin-top: 20px;">
-            Website will close after 3 failed attempts!
-        </p>
-    `;
+                <button class="close-btn" onclick="closeSecurityOverlay()" style="position: absolute; top: 10px; right: 10px;">✕</button>
+                <h2 style="color: #ff4444; margin-bottom: 20px; font-size: clamp(1.5rem, 5vw, 2rem);">🔒 SECURITY LOCK 🔒</h2>
+                <p style="color: white; margin-bottom: 10px; font-size: clamp(0.9rem, 3vw, 1rem);">Inspection is not allowed on this website!</p>
+                <p style="color: #ffcc00; margin-bottom: 20px; font-size: clamp(0.85rem, 2.5vw, 0.9rem);">
+                    Attempts remaining: <span id="attemptsCount">${attemptsLeft}</span>/3
+                </p>
+                
+                <div style="position: relative; width: 100%; margin-bottom: 20px;">
+                    <input type="password" id="securityPassword" 
+                           placeholder="Enter security password" 
+                           style="width: 100%; padding: 12px 40px 12px 12px; 
+                                  border: 1px solid #444; border-radius: 5px; 
+                                  background: #222; color: white; font-size: 16px;
+                                  -webkit-appearance: none; box-sizing: border-box;">
+                    <div style="position: absolute; right: 12px; top: 50%; 
+                               transform: translateY(-50%); background: none; 
+                               border: none; cursor: pointer; color: #888; 
+                               padding: 5px; display: flex; align-items: center;
+                               transition: color 0.3s;"
+                         onclick="toggleSecurityPassword(this)">
+                        <svg id="securityEyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <button id="submitPassword" 
+                        style="background: #ff4444; color: white; border: none; 
+                               padding: 12px 30px; border-radius: 5px; 
+                               font-size: clamp(0.9rem, 3vw, 1rem); cursor: pointer; width: 100%;
+                               transition: 0.3s; -webkit-tap-highlight-color: transparent;">
+                    VERIFY & CONTINUE
+                </button>
+                <p style="color: #888; font-size: clamp(0.75rem, 2.5vw, 0.85rem); margin-top: 20px;">
+                    Enter password to inspect or close this window
+                </p>
+            `;
 
             overlay.appendChild(passwordBox);
             document.body.appendChild(overlay);
@@ -1427,15 +1784,14 @@
                 const input = document.getElementById('securityPassword').value;
 
                 if (input === SECURITY_PASSWORD) {
-                    // Correct password
-                    failedAttempts = 0;
+                    // Correct password - allow inspection
+                    securityFailedAttempts = 0;
                     document.body.removeChild(overlay);
-                    // Allow inspection for 60 seconds
                     allowTemporaryInspection();
                 } else {
                     // Wrong password
-                    failedAttempts++;
-                    document.getElementById('attemptsCount').textContent = MAX_ATTEMPTS - failedAttempts;
+                    securityFailedAttempts++;
+                    document.getElementById('attemptsCount').textContent = MAX_SECURITY_ATTEMPTS - securityFailedAttempts;
 
                     // Shake animation
                     passwordBox.style.animation = 'shake 0.5s';
@@ -1445,8 +1801,9 @@
 
                     // Clear input
                     document.getElementById('securityPassword').value = '';
+                    document.getElementById('securityPassword').focus();
 
-                    if (failedAttempts >= MAX_ATTEMPTS) {
+                    if (securityFailedAttempts >= MAX_SECURITY_ATTEMPTS) {
                         // Close website after 3 failed attempts
                         document.getElementById('submitPassword').disabled = true;
                         document.getElementById('submitPassword').style.background = '#666';
@@ -1465,44 +1822,73 @@
                     document.getElementById('submitPassword').click();
                 }
             });
-
-            // Add shake animation
-            const style = document.createElement('style');
-            style.textContent = `
-        @keyframes shake {
-            0%, 100% {transform: translateX(0);}
-            10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
-            20%, 40%, 60%, 80% {transform: translateX(5px);}
         }
-    `;
-            document.head.appendChild(style);
+
+        // Function to toggle security password visibility
+        function toggleSecurityPassword(iconContainer) {
+            const input = document.getElementById('securityPassword');
+            const eyeIcon = iconContainer.querySelector('#securityEyeIcon');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeIcon.innerHTML = `
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                `;
+            } else {
+                input.type = 'password';
+                eyeIcon.innerHTML = `
+                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                `;
+            }
+        }
+
+        // Function to close security overlay
+        function closeSecurityOverlay() {
+            const overlay = document.getElementById('securityOverlay');
+            if (overlay && overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+            }
         }
 
         // Function to allow temporary inspection (after correct password)
         function allowTemporaryInspection() {
-            const message = document.createElement('div');
-            message.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #4CAF50;
-        color: white;
-        padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px);
-        border-radius: 5px;
-        z-index: 999998;
-        font-family: Arial;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
-    `;
-            message.innerHTML = '🔓 Inspection allowed for 60 seconds';
-            document.body.appendChild(message);
+            inspectionAllowed = true;
 
-            // Remove message after 60 seconds and re-enable protection
-            setTimeout(() => {
-                if (message.parentNode) {
-                    message.parentNode.removeChild(message);
+            // Show notification
+            const notification = document.createElement('div');
+            notification.className = 'security-notification';
+            notification.innerHTML = `
+                <span>🔓</span>
+                <div>
+                    <div style="font-weight: bold;">Inspection Allowed</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Time remaining: <span class="countdown" id="inspectionTimer">60</span>s</div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+
+            let timeLeft = 60;
+            const timerElement = document.getElementById('inspectionTimer');
+
+            // Start countdown
+            inspectionTimer = setInterval(() => {
+                timeLeft--;
+                if (timerElement) timerElement.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(inspectionTimer);
+                    inspectionAllowed = false;
+
+                    // Hide notification with animation
+                    notification.classList.add('hidden');
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 500);
                 }
-            }, 60000);
+            }, 1000);
         }
 
         // Function to close website (multiple methods)
@@ -1513,31 +1899,31 @@
 
             // Clear entire page
             document.body.innerHTML = `
-        <div style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            color: red;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            z-index: 9999999;
-            padding: 20px;
-        ">
-            <div>
-                <h1 style="font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 20px;">⛔ WEBSITE CLOSED</h1>
-                <p style="font-size: clamp(1rem, 4vw, 1.25rem); color: #ff4444;">Security violation detected!</p>
-                <p style="font-size: clamp(0.9rem, 3vw, 1rem); color: #888; margin-top: 30px;">
-                    This website does not allow inspection.
-                </p>
-            </div>
-        </div>
-    `;
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    color: red;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-family: Arial, sans-serif;
+                    text-align: center;
+                    z-index: 9999999;
+                    padding: 20px;
+                ">
+                    <div>
+                        <h1 style="font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 20px;">⛔ WEBSITE CLOSED</h1>
+                        <p style="font-size: clamp(1rem, 4vw, 1.25rem); color: #ff4444;">Security violation detected!</p>
+                        <p style="font-size: clamp(0.9rem, 3vw, 1rem); color: #888; margin-top: 30px;">
+                            This website does not allow inspection.
+                        </p>
+                    </div>
+                </div>
+            `;
 
             // Try multiple methods to close window
             setTimeout(() => {
@@ -1566,6 +1952,28 @@
             }, 1000);
         }
 
+        // ==================== INITIALIZATION ====================
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize
+        window.onload = () => {
+            loadTheme();
+            document.getElementById('password-input').focus();
+        };
+
         // Initialize security when page loads
         window.addEventListener('load', function() {
             // Add security warning to console
@@ -1575,16 +1983,7 @@
 
             // Initialize all security measures
             blockDevTools();
-
-            // Also check on page visibility change (tab switching)
-            document.addEventListener('visibilitychange', function() {
-                if (document.hidden) {
-                    setTimeout(blockDevTools, 1000);
-                }
-            });
         });
-
-        // Removed beforeunload protection to allow page reloading
     </script>
 </body>
 
